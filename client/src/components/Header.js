@@ -5,11 +5,11 @@ const Header = () => {
     return (
         <div className="ui secondary pointing menu">
             <Link to="/" className="item">
-                Streamy
+                Book List
             </Link>
             <div className="right menu">
             <Link to="/" className="item">
-                All Streams
+                All Books
             </Link>
             <GoogleAuth />
             </div>
