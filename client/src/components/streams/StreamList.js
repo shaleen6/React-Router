@@ -12,11 +12,16 @@ class StreamList extends React.Component{
         if(stream.userId===this.props.currentUserId){
             return (
                 <div className="right floated content">
-                    <Link className="ui button primary" to={`/streams/edit/${stream.id}`}>
-                        Edit
+                    
+                    <Link to={`/streams/edit/${stream.id}`} >
+                         <button className="ui button primary">
+                            Edit
+                         </button>
                     </Link>
-                    <Link className="ui button negative" to={`/streams/delete/${stream.id}`}>
-                        Delete
+                    <Link to={`/streams/delete/${stream.id}`}>
+                         <button className="ui button negative">
+                            Delete
+                         </button>
                     </Link>
                 </div>);
         }
@@ -27,10 +32,9 @@ class StreamList extends React.Component{
             return (
                 <div className="item" key={stream.id}>
                     {this.renderAdmin(stream)}
-                    <i className="large middle aligned icon camera" />
-                    <div className="content">
+                    <i className="large middle aligned icon book" />
+                    <div className="content list-content">
                         <Link to={`/streams/${stream.id}`} className="header">{stream.title}</Link>
-                        <div className="description">{stream.description}</div>
                     </div>
                 </div>
             );
@@ -61,9 +65,11 @@ class StreamList extends React.Component{
 }
 
 const mapStateToProps=(state) => {
-    console.log(state);
+    var streams = Object.keys(state.streams).map(function(key) {
+        return state.streams[key];
+    });
     return { 
-        streams: Object.values(state.streams),
+        streams: streams,
         currentUserId:state.auth.userId,
         isSignedIn: state.auth.isSignedIn
     };
