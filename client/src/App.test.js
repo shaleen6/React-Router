@@ -3,9 +3,7 @@ import { shallow, mount, render } from 'enzyme';
 import { Route , withRouter} from 'react-router-dom';
 import Routes from './components/Routes';
 import App from './components/App';
-import Header from './components/Header';
 import ConnectedStreamList  from './components/streams/StreamList';
-import StreamList  from './components/streams/StreamList';
 import StreamCreate from './components/streams/StreamCreate';
 import StreamEdit from './components/streams/StreamEdit';
 import StreamDelete from './components/streams/StreamDelete';
@@ -43,16 +41,16 @@ describe('Testing react component with enzyme', () => {
   });
 describe('Testing StreamList component with enzyme', () => {
     const initialState = { 
-    streams: {title:'Heelo', description:'Description'},
-    auth: {userId:'121312'},
-    isSignedIn: true};
+        streams: { title:'Heelo', description:'Description' },
+        auth: { userId:'121312' },
+        isSignedIn: true
+      };
     const mockStore = configureStore()
-    let store,container, mounter;
+    let store,container;
     
     beforeEach(()=>{
-        store = mockStore(initialState)
-        container = shallow(<ConnectedStreamList store={store} /> )  
-        mounter = shallow(<Routes store={store}/>);
+        store = mockStore(initialState);
+        container = shallow(<ConnectedStreamList store={store} /> );
     })
 
     it("should render without throwing an error", () => {
@@ -60,8 +58,8 @@ describe('Testing StreamList component with enzyme', () => {
     });
 
     it("should render edit button ", () => {
-      console.log(mounter.debug());
-      expect(mounter.find('.ui button primary').length).toEqual(1); 
+      console.log(container.debug());
+      expect(container.find('#id').length).toBe(1); 
     });
      
   });

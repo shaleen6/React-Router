@@ -13,8 +13,9 @@ const Routes =() => {
     return (
         <Router history={history}>
             <div>
+            <PageHeader />
                 <Switch>
-                    <PageHeader />
+                   
                     <Route path="/" exact component={StreamList}/>
                     <Route path="/streams/new" exact component={StreamCreate}/>
                     <Route path="/streams/edit/:id" exact component={StreamEdit}/>
